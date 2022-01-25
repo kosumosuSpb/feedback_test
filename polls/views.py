@@ -100,15 +100,19 @@ class AnswerListViewAPI(generics.ListCreateAPIView):
     queryset = Answer.objects.all()
     serializer_class = AnswerSerializer
 
+    # переопределяем метод, чтобы можно было получать все ответы на конкретный вопрос
     def get_queryset(self):
         # берём все ответы (если не указан конкретный вопрос - выдадим их все)
         answers = Answer.objects.all()
+
         # пытаемся забрать из адреса pk вопроса, если его нет, то берём None
         question_pk = self.kwargs.get('q_pk', None)
+
         if question_pk:
             # если вопрос указан, то забираем объект с этим id
             # (если его не существует, то придёт просто пустой кверисет)
             answers = answers.filter(question_id=question_pk)
+
         return answers
 
 
