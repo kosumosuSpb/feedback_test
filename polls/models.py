@@ -30,7 +30,7 @@ class Question(models.Model):
     # метод-свойство для определения результатов голосования.
     # Выдаёт среднее арифметическое всех оценок из answers
     @property
-    def get_rating(self):
+    def rating(self):
         rating = self.answers.aggregate(rate=models.Avg('rating'))['rate']
         return round(rating, 1) if rating else None
 

@@ -13,7 +13,7 @@ urlpatterns = [
     path('answers/', views.AnswerListViewAPI.as_view()),  # вывод всех ответов на все вопросы
     path('answers/<int:pk>/', views.AnswerDetailViewAPI.as_view()),  # вывод конкретного ответа
     path('<int:q_pk>/answers/', views.AnswerListViewAPI.as_view()),  # вывод всех ответов на конкретный вопрос
-    path('<int:q_pk>/answers/<int:pk>', views.AnswerDetailViewAPI.as_view()),  # вывод конкретного ответа на кокретный вопрос
+    path('<int:q_pk>/answers/<int:pk>', views.AnswerDetailViewAPI.as_view()),  # вывод конкретного ответа на конкретный вопрос
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

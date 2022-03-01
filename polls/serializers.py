@@ -5,28 +5,28 @@ from .models import *
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ['id', 'name', 'description']
+        fields = '__all__'
 
 
 class TemplateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Template
-        fields = ['id', 'name', 'description']
+        fields = '__all__'
 
 
 class QuestionListSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuestionList
-        fields = ['id', 'title', 'project']
+        fields = '__all__'
 
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
-        fields = ['id', 'title', 'description', 'question_list', 'template', 'get_rating']
+        fields = ['id', 'title', 'description', 'question_list', 'template', 'rating']
 
 
 class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
-        fields = ['id', 'rating', 'question']
+        fields = '__all__'

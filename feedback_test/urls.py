@@ -15,12 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from polls import views
 from rest_framework.urlpatterns import format_suffix_patterns
 
 
+# Create a router and register our viewsets with it.
+router = DefaultRouter()
+
+router.register(r'project', views.ProjectVewset)
+router.register(r'question_list', views.QuestionListViewset)
+router.register(r'questions', views.QuestionViewset)
+router.register(r'answers', views.AnswersViewset)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('polls.urls')),
+    path('', include(router.urls)),
 
 ]
 
