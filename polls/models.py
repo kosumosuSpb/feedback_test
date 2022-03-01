@@ -32,7 +32,7 @@ class Question(models.Model):
     @property
     def rating(self):
         rating = self.answers.aggregate(rate=models.Avg('rating'))['rate']
-        return round(rating, 1) if rating else None
+        return round(rating, 1) if rating else 0
 
 
 class Answer(models.Model):

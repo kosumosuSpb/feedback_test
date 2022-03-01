@@ -34,7 +34,7 @@ class QuestionViewset(viewsets.ModelViewSet):
         question = get_object_or_404(queryset, pk=pk)  # вытаскиваем конкретный вопрос
         answers = Answer.objects.filter(question=question)  # фильтруем ответы по этому вопросу
         serializer = AnswerSerializer(answers, many=True)  # прогоняем через сериалайзер ответов
-        return Response(serializer.data)  # возвращаем их, как ответ
+        return Response(serializer.data)  # возвращаем их
 
 
 class AnswersViewset(viewsets.ModelViewSet):

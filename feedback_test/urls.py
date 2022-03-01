@@ -23,8 +23,8 @@ from rest_framework.urlpatterns import format_suffix_patterns
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
 
-router.register(r'project', views.ProjectVewset)
-router.register(r'question_list', views.QuestionListViewset)
+router.register(r'projects', views.ProjectVewset)
+router.register(r'question_lists', views.QuestionListViewset)
 router.register(r'questions', views.QuestionViewset)
 router.register(r'answers', views.AnswersViewset)
 
