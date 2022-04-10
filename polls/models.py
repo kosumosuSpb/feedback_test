@@ -5,6 +5,14 @@ from django.db import models
 class Template(models.Model):
     name = models.CharField(max_length=45)
     description = models.CharField(max_length=255)
+    thanks_text = models.CharField(max_length=255, default='Благодарим Вас за предоставленную информацию',
+                                   null=True, blank=True)
+    main_color = models.CharField(max_length=7, null=True, blank=True)
+    thanks_color = models.CharField(max_length=7, null=True, blank=True)
+    bg_color = models.CharField(max_length=7, null=True, blank=True)
+    thanks_bg_color = models.CharField(max_length=7, null=True, blank=True)
+    position = models.CharField(max_length=30, default='center', null=True, blank=True)
+    size = models.CharField(max_length=30, default='desktop', null=True, blank=True)
     # questions - FK
 
 
@@ -39,3 +47,4 @@ class Answer(models.Model):
     rating = models.IntegerField(default=0)
     data_time = models.DateTimeField(auto_now_add=True)
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answers')
+

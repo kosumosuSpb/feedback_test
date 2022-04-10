@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from polls import views
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.urlpatterns import format_suffix_patterns
 
 
@@ -27,10 +28,14 @@ router.register(r'projects', views.ProjectVewset)
 router.register(r'question_lists', views.QuestionListViewset)
 router.register(r'questions', views.QuestionViewset)
 router.register(r'answers', views.AnswersViewset)
+router.register(r'template', views.TemplateViewset)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    # OpenAPI 3 documentation with Swagger UI
+    path("schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("docs/", SpectacularSwaggerView.as_view(template_name="swagger-ui.html", url_name="schema"), name="swagger-ui",),
 
 ]
 

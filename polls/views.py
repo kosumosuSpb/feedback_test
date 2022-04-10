@@ -10,6 +10,12 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+class TemplateViewset(viewsets.ModelViewSet):
+    """Шаблоны"""
+    queryset = Template.objects.all()
+    serializer_class = TemplateSerializer
+
+
 class ProjectVewset(viewsets.ModelViewSet):
     """Проекты"""
     queryset = Project.objects.all()

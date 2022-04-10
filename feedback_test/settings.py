@@ -40,12 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
+    'corsheaders',
     'rest_framework',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -71,6 +74,20 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    # пагинацию выключил, но можно включить
+    # "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    # "PAGE_SIZE": 10,
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Сервис создания опросов: API Docs',
+    'DESCRIPTION': 'Автоматическая документация по API для создания опросов',
+    'VERSION': '1.0.0',
+    # OTHER SETTINGS
+}
 
 WSGI_APPLICATION = 'feedback_test.wsgi.application'
 
